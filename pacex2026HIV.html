@@ -1,0 +1,982 @@
+<!doctype html><html><head><meta charset=utf8><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Questões de HIV | PACEX 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@700;800&display=swap">
+<style>
+  /* Layout: coluna única. Cartão de cabeçalho com laço, título e placar; abas; cartão central de estudo.
+     Paleta do banner PACEX: vermelho do laço, azul-marinho, verde, roxo e rosa claro dos destaques. */
+  :root {
+    --bg: #eeeff2;
+    --surface: #ffffff;
+    --surface-2: #f0f1f4;
+    --fg: #1a1a22;
+    --muted: #5d6170;
+    --line: #d8dae1;
+    --accent: #c8102e;
+    --accent-fg: #ffffff;
+    --accent-soft: #fbe9ec;
+    --navy: #232f6e;
+    --navy-soft: #e6e9f6;
+    --ok: #2e7d38;
+    --ok-soft: #e1f1e3;
+    --bad: #c8102e;
+    --bad-soft: #fbe9ec;
+    --onc: #ffffff;
+    --c-conceito: #3a4152;       --c-conceito-s: #e9ebf0;
+    --c-transmissao: #232f6e;    --c-transmissao-s: #e6e9f6;
+    --c-prevencao: #c8102e;      --c-prevencao-s: #fbe9ec;
+    --c-fisiopatologia: #2e7d38; --c-fisiopatologia-s: #e1f1e3;
+    --c-diagnostico: #4a2c8a;    --c-diagnostico-s: #ece6f8;
+    --c-tratamento: #8a1c2b;     --c-tratamento-s: #f5dfe3;
+    --font-display: "Archivo", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12131a;
+      --surface: #1b1d27;
+      --surface-2: #252836;
+      --fg: #eceef5;
+      --muted: #9fa4b5;
+      --line: #303444;
+      --accent: #ff5a6e;
+      --accent-fg: #1a0509;
+      --accent-soft: #3a1820;
+      --navy: #8c9cff;
+      --navy-soft: #222a55;
+      --ok: #5cc46a;
+      --ok-soft: #14301a;
+      --bad: #ff7d8c;
+      --bad-soft: #3a1820;
+      --onc: #12131a;
+      --c-conceito: #b8bfd0;       --c-conceito-s: #2b303f;
+      --c-transmissao: #8c9cff;    --c-transmissao-s: #222a55;
+      --c-prevencao: #ff6b7d;      --c-prevencao-s: #3a1820;
+      --c-fisiopatologia: #5cc46a; --c-fisiopatologia-s: #14301a;
+      --c-diagnostico: #b79cff;    --c-diagnostico-s: #2d2250;
+      --c-tratamento: #e58a96;     --c-tratamento-s: #3a2026;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12131a;
+    --surface: #1b1d27;
+    --surface-2: #252836;
+    --fg: #eceef5;
+    --muted: #9fa4b5;
+    --line: #303444;
+    --accent: #ff5a6e;
+    --accent-fg: #1a0509;
+    --accent-soft: #3a1820;
+    --navy: #8c9cff;
+    --navy-soft: #222a55;
+    --ok: #5cc46a;
+    --ok-soft: #14301a;
+    --bad: #ff7d8c;
+    --bad-soft: #3a1820;
+    --onc: #12131a;
+    --c-conceito: #b8bfd0;       --c-conceito-s: #2b303f;
+    --c-transmissao: #8c9cff;    --c-transmissao-s: #222a55;
+    --c-prevencao: #ff6b7d;      --c-prevencao-s: #3a1820;
+    --c-fisiopatologia: #5cc46a; --c-fisiopatologia-s: #14301a;
+    --c-diagnostico: #b79cff;    --c-diagnostico-s: #2d2250;
+    --c-tratamento: #e58a96;     --c-tratamento-s: #3a2026;
+    color-scheme: dark;
+  }
+
+  .cat-conceito       { --cc: var(--c-conceito);       --cs: var(--c-conceito-s); }
+  .cat-transmissao    { --cc: var(--c-transmissao);    --cs: var(--c-transmissao-s); }
+  .cat-prevencao      { --cc: var(--c-prevencao);      --cs: var(--c-prevencao-s); }
+  .cat-fisiopatologia { --cc: var(--c-fisiopatologia); --cs: var(--c-fisiopatologia-s); }
+  .cat-diagnostico    { --cc: var(--c-diagnostico);    --cs: var(--c-diagnostico-s); }
+  .cat-tratamento     { --cc: var(--c-tratamento);     --cs: var(--c-tratamento-s); }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    padding-block: 24px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+
+  header { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+  .head-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .ribbon { width: 52px; height: 52px; flex: none; }
+  h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.4rem, 5.2vw, 2.1rem); line-height: 1.1; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  h1 .sep { color: var(--line); font-weight: 400; margin: 0 0.15em; }
+  h1 .evt { color: var(--accent); }
+  h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin: 0; line-height: 1.3; }
+  .tagline { background: var(--accent); color: var(--accent-fg); border-radius: 999px; padding: 8px 18px; font-size: 0.85rem; font-weight: 600; text-align: center; margin: 0; text-wrap: balance; }
+  .score { display: flex; gap: 22px; }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat .label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .stat .value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  .tabs { display: flex; gap: 6px; background: var(--surface); border: 1px solid var(--line); padding: 4px; border-radius: 12px; }
+  .tabs button { flex: 1; border: 0; background: transparent; padding: 10px 8px; border-radius: 9px; font-weight: 600; color: var(--muted); min-height: 44px; }
+  .tabs button:hover { color: var(--fg); }
+  .tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-fg); }
+
+  .panel { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 13px; font-size: 0.88rem; font-weight: 500; min-height: 36px; }
+  .chip::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--cc); flex: none; }
+  .chip:hover:not(:disabled) { border-color: var(--cc); }
+  .chip[aria-pressed="true"] { background: var(--cc); color: var(--onc); border-color: var(--cc); }
+  .chip[aria-pressed="true"]::before { background: var(--onc); }
+  .chip .n { opacity: 0.7; font-variant-numeric: tabular-nums; }
+  .chip:disabled { opacity: 0.45; cursor: default; }
+  .chips-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+  .qcard.has-cat { border-top: 5px solid var(--cc); }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); }
+  .tag { background: var(--surface-2); border-radius: 999px; padding: 2px 10px; font-weight: 500; color: var(--fg); }
+  .tag.cat { background: var(--cs, var(--accent-soft)); color: var(--cc, var(--accent)); font-weight: 700; }
+  .qtext { font-family: var(--font-body); font-size: 1.2rem; line-height: 1.45; font-weight: 600; margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .opt {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 12px;
+    align-items: start;
+    text-align: left;
+    width: 100%;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 0;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--navy); }
+  .opt .key { font-family: var(--font-display); font-weight: 700; width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 8px; background: var(--surface-2); }
+  .opt .txt { padding-top: 3px; overflow-wrap: anywhere; }
+  .opt[aria-checked="true"] { border-color: var(--navy); background: var(--navy-soft); }
+  .opt[aria-checked="true"] .key { background: var(--navy); color: var(--onc); }
+  .opt.correct { border-color: var(--ok); background: var(--ok-soft); }
+  .opt.correct .key { background: var(--ok); color: var(--onc); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+  .opt.wrong .key { background: var(--bad); color: var(--onc); }
+  .opt:disabled { cursor: default; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { border-radius: 10px; padding: 11px 18px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 600; min-height: 44px; }
+  .btn:hover:not(:disabled) { border-color: var(--accent); }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+  .btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  .btn.primary:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn.ghost { border-color: transparent; color: var(--muted); font-weight: 500; }
+  .btn.ghost:hover { color: var(--fg); border-color: var(--line); }
+  .btn.small { min-height: 36px; padding: 6px 12px; font-size: 0.88rem; }
+  .btn.danger { border-color: var(--bad); color: var(--bad); }
+
+  .answer { border-top: 1px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .verdict { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; flex-wrap: wrap; }
+  .verdict .pill { border-radius: 999px; padding: 3px 12px; font-size: 0.85rem; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.neutral { background: var(--surface-2); color: var(--muted); }
+  .comment-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .comment { margin: 0; white-space: pre-line; overflow-wrap: anywhere; max-width: 65ch; }
+
+  .notice { font-size: 0.9rem; color: var(--muted); margin: 0; min-height: 1.3em; }
+  .notice.err { color: var(--bad); }
+  .hint { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 0.9rem; min-width: 0; }
+  input[type="text"], select, textarea {
+    width: 100%; font: inherit; font-weight: 400; font-size: 0.97rem;
+    background: var(--bg); color: var(--fg);
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 10px 12px; min-height: 44px;
+  }
+  textarea { resize: vertical; min-height: 96px; }
+  .altrows { display: flex; flex-direction: column; gap: 10px; }
+  .altrow { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; }
+  .gab { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; min-height: 44px; cursor: pointer; width: 3.2rem; }
+  .gab input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; }
+  .form-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+  details.bulk { border: 1px solid var(--line); border-radius: 12px; padding: 0 16px; background: var(--surface); }
+  details.bulk summary { cursor: pointer; padding: 14px 0; font-weight: 700; font-family: var(--font-display); }
+  details.bulk[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .bulk-body { display: flex; flex-direction: column; gap: 14px; padding-bottom: 18px; min-width: 0; }
+  pre.fmt { margin: 0; background: var(--surface-2); border-radius: 10px; padding: 12px 14px; font-size: 0.85rem; overflow-x: auto; line-height: 1.5; max-width: 100%; }
+  .errors { color: var(--bad); font-size: 0.88rem; margin: 0; padding-left: 1.1rem; }
+
+  .bank { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .bitem { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: var(--surface); min-width: 0; }
+  .btxt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; margin: 0; }
+  .bmeta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 480px) {
+    header { padding: 16px; }
+    .ribbon { width: 42px; height: 42px; }
+    .card { padding: 18px; }
+    .qtext { font-size: 1.1rem; }
+    .actions .btn { flex: 1 1 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Ajustes responsivos para celular e tablet */
+html {
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.wrap {
+  width: min(100%, 900px);
+}
+header, .card, .tabs, .panel, .bulk, .bank, .bitem {
+  min-width: 0;
+}
+.brand { min-width: 0; flex: 1 1 360px; }
+.brand h1 { min-width: 0; overflow-wrap: anywhere; }
+.score { flex: 0 0 auto; }
+.tabs button { min-width: 0; overflow-wrap: anywhere; }
+.chips { align-items: flex-start; }
+.chip { max-width: 100%; white-space: normal; text-align: left; }
+.qtext, .comment, .hint, .notice, .field, .btxt { overflow-wrap: anywhere; }
+.options, .opt, .opt .txt { min-width: 0; }
+input, select, textarea, button { max-width: 100%; }
+textarea { white-space: pre-wrap; overflow-wrap: anywhere; }
+pre.fmt { white-space: pre-wrap; overflow-wrap: anywhere; }
+.altrow { min-width: 0; }
+.altrow input[type="text"] { min-width: 0; }
+button, .chip, summary, select, input, textarea {
+  touch-action: manipulation;
+}
+.btn, .tabs button, .chip, .opt {
+  -webkit-user-select: none;
+  user-select: none;
+}
+:focus-visible { scroll-margin-block: 12px; }
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  body { padding: 22px max(22px, env(safe-area-inset-left, 0px)) 40px; }
+  .wrap { max-width: 820px; gap: 18px; }
+  header { padding: 22px; }
+  .card { padding: 22px; }
+  .qtext { font-size: clamp(1.15rem, 2.2vw, 1.35rem); }
+  .chip { min-height: 42px; padding: 8px 14px; }
+  .opt { padding: 14px 16px; }
+  .btn, .tabs button { min-height: 48px; }
+}
+
+@media (max-width: 599px) {
+  body {
+    padding-top: max(12px, env(safe-area-inset-top, 0px));
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+    padding-left: max(12px, env(safe-area-inset-left, 0px));
+    padding-right: max(12px, env(safe-area-inset-right, 0px));
+    font-size: 15px;
+  }
+  .wrap { gap: 14px; }
+  header { padding: 14px; gap: 12px; border-radius: 12px; }
+  .head-row { align-items: flex-start; gap: 12px; }
+  .brand { flex: 1 1 100%; gap: 10px; }
+  .ribbon { width: 38px; height: 38px; }
+  h1 { font-size: clamp(1.25rem, 6vw, 1.7rem); line-height: 1.12; }
+  .score {
+    width: 100%;
+    justify-content: space-around;
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .stat { flex: 1; align-items: center; }
+  .stat .label { font-size: .68rem; }
+  .stat .value { font-size: 1.25rem; }
+  .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; }
+  .tabs button { min-width: 0; min-height: 46px; padding: 8px 4px; font-size: .86rem; }
+  .panel { gap: 14px; }
+  .chips-label { line-height: 1.5; }
+  .chips { gap: 7px; }
+  .chip { min-height: 40px; padding: 7px 10px; font-size: .82rem; gap: 6px; }
+  .chip::before { width: 8px; height: 8px; }
+  .card { padding: 16px; gap: 16px; border-radius: 12px; }
+  .qtext { font-size: 1.08rem; line-height: 1.48; }
+  .meta { gap: 6px; font-size: .76rem; }
+  .options { gap: 8px; }
+  .opt { grid-template-columns: 1.8rem minmax(0, 1fr); gap: 9px; padding: 11px 10px; border-radius: 9px; }
+  .opt .key { width: 1.8rem; height: 1.8rem; }
+  .opt .txt { padding-top: 1px; }
+  .actions, .form-actions { gap: 8px; }
+  .actions .btn, .form-actions .btn { flex: 1 1 100%; width: 100%; }
+  .btn { min-height: 46px; padding: 11px 12px; }
+  .btn.small { min-height: 42px; }
+  .answer { padding-top: 14px; }
+  .comment { font-size: .94rem; }
+  .altrow { grid-template-columns: 2.6rem minmax(0, 1fr); gap: 6px; }
+  .gab { width: 2.6rem; gap: 5px; }
+  .gab input { width: 20px; height: 20px; }
+  input[type="text"], select, textarea { font-size: 16px; min-height: 46px; }
+  textarea { min-height: 112px; }
+  details.bulk { padding-inline: 12px; }
+  .bulk-body { gap: 12px; }
+  pre.fmt { font-size: .8rem; padding: 10px; }
+  .bitem { padding: 12px; }
+  .bitem .form-actions, .bitem .actions { flex-direction: column; align-items: stretch; }
+}
+
+@media (max-width: 360px) {
+  body { padding-left: 10px; padding-right: 10px; }
+  .tabs button { font-size: .78rem; padding-inline: 2px; }
+  .chip { font-size: .78rem; padding-inline: 8px; }
+  .card { padding: 13px; }
+  .opt { grid-template-columns: 1.65rem minmax(0, 1fr); gap: 8px; padding: 10px 8px; }
+  .opt .key { width: 1.65rem; height: 1.65rem; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  body { padding-top: 10px; padding-bottom: 18px; }
+  .wrap { gap: 12px; }
+  header { padding: 12px 16px; }
+  .card { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="head-row">
+      <div class="brand">
+        <svg class="ribbon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M32 8 C20 8 16 20 24 32 C28 38 36 46 44 58" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M32 8 C44 8 48 20 40 32 C36 38 28 46 20 58" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.88"/>
+        </svg>
+        <h1>Questões de HIV <span class="sep">|</span> <span class="evt">PACEX 2026</span></h1>
+      </div>
+      <div class="score" aria-label="Placar">
+        <div class="stat"><span class="label">Sorteadas</span><span class="value" id="stDrawn">0/0</span></div>
+        <div class="stat"><span class="label">Acertos</span><span class="value" id="stHits">0/0</span></div>
+      </div>
+    </div>
+   
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Seções">
+    <button type="button" role="tab" id="tabSortear" data-p="pSortear" aria-selected="true">Sortear</button>
+    <button type="button" role="tab" id="tabCadastrar" data-p="pCadastrar" aria-selected="false">Cadastrar</button>
+    <button type="button" role="tab" id="tabBanco" data-p="pBanco" aria-selected="false">Banco <span id="bankCount"></span></button>
+  </div>
+
+  <!-- SORTEAR -->
+  <section class="panel" id="pSortear" role="tabpanel" aria-labelledby="tabSortear">
+    <div>
+      <div class="chips-label">Categorias <span style="text-transform:none;letter-spacing:0;font-weight:400">(sem seleção, sorteia de todas)</span></div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="card qcard" id="qCard" aria-live="polite">
+      <div class="meta">
+        <span class="tag cat" id="mCat" hidden></span>
+        <span class="tag" id="mEx" hidden>Exemplo</span>
+        <span id="mNum"></span>
+      </div>
+      <p class="qtext" id="qText">Carregando suas questões…</p>
+      <div class="options" id="opts" role="radiogroup" aria-label="Alternativas" hidden></div>
+      <div class="actions">
+        <button class="btn primary" id="btnDraw" type="button" disabled>Sortear questão</button>
+        <button class="btn" id="btnReveal" type="button" hidden>Ver gabarito e comentário</button>
+      </div>
+      <div class="answer" id="answer" hidden>
+        <div class="verdict"><span class="pill" id="vPill"></span><span id="vText"></span></div>
+        <div class="comment-label">Comentário</div>
+        <p class="comment" id="vComment"></p>
+      </div>
+      <p class="notice" id="notice"></p>
+    </div>
+  </section>
+
+  <!-- CADASTRAR -->
+  <section class="panel" id="pCadastrar" role="tabpanel" aria-labelledby="tabCadastrar" hidden>
+    <form class="card" id="qForm" novalidate>
+      <h2 id="formTitle">Nova questão</h2>
+      <label class="field" for="fCat">Categoria
+        <select id="fCat"></select>
+      </label>
+      <label class="field" for="fQ">Enunciado
+        <textarea id="fQ" placeholder="Escreva a pergunta"></textarea>
+      </label>
+      <div class="field" role="group" aria-labelledby="altLabel">
+        <span id="altLabel">Alternativas</span>
+        <p class="hint">Marque a bolinha da alternativa correta.</p>
+        <div class="altrows" id="altRows"></div>
+        <div class="form-actions">
+          <button class="btn small" type="button" id="btnAddAlt">Adicionar alternativa</button>
+          <button class="btn small ghost" type="button" id="btnDelAlt">Remover a última</button>
+        </div>
+      </div>
+      <label class="field" for="fC">Comentário (explicação do gabarito)
+        <textarea id="fC" placeholder="Por que essa alternativa está correta?"></textarea>
+      </label>
+      <div class="form-actions">
+        <button class="btn primary" type="submit" id="btnSave">Salvar questão</button>
+        <button class="btn ghost" type="button" id="btnCancelEdit" hidden>Cancelar edição</button>
+      </div>
+      <p class="notice" id="formMsg" role="status"></p>
+    </form>
+
+    <details class="bulk">
+      <summary>Colar várias questões de uma vez</summary>
+      <div class="bulk-body">
+        <p class="hint">Separe cada questão com uma linha de três traços. A linha “Categoria:” é opcional se você escolher uma categoria abaixo.</p>
+        <pre class="fmt">Categoria: Transmissão
+Qual é o principal vetor da dengue?
+A) Anopheles
+B) Aedes aegypti
+C) Culex
+Gabarito: B
+Comentário: A fêmea do Aedes aegypti transmite o vírus.
+---
+Próxima questão...</pre>
+        <label class="field" for="bCat">Categoria padrão
+          <select id="bCat"></select>
+        </label>
+        <label class="field" for="bText">Questões
+          <textarea id="bText" style="min-height:200px" spellcheck="false" placeholder="Cole aqui"></textarea>
+        </label>
+        <ul class="errors" id="bErrors" hidden></ul>
+        <div class="form-actions">
+          <button class="btn" type="button" id="btnBulk">Cadastrar todas</button>
+        </div>
+        <p class="notice" id="bMsg" role="status"></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- BANCO -->
+  <section class="panel" id="pBanco" role="tabpanel" aria-labelledby="tabBanco" hidden>
+    <p class="hint" id="bankHint"></p>
+    <ul class="bank" id="bankList"></ul>
+  </section>
+</div>
+
+<script>
+(function () {
+  var CATS = ["Transmissão", "Conceito", "Prevenção", "Fisiopatologia", "Diagnóstico", "Tratamento"];
+  var LETTERS = ["A", "B", "C", "D", "E"];
+  function slug(c) { return String(c || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+  function setCardCat(cat) {
+    var qc = document.getElementById("qCard");
+    qc.className = "card qcard" + (cat ? " has-cat cat-" + slug(cat) : "");
+  }
+
+  var BUILTIN_QUESTIONS = [{"id":"hiv001","cat":"Conceito","q":"Qual afirmação descreve corretamente o HIV?","o":[{"k":"A","t":"Um vírus que ataca principalmente células do sistema imunológico"},{"k":"B","t":"Uma bactéria que causa infecção intestinal"},{"k":"C","t":"Um fungo transmitido pelo ar"},{"k":"D","t":"Um parasita que vive apenas no sangue"}],"a":"A","c":"O HIV é um vírus que infecta células do sistema imunológico, especialmente os linfócitos T CD4+."},{"id":"hiv002","cat":"Conceito","q":"Qual é a principal diferença entre HIV e AIDS?","o":[{"k":"A","t":"São nomes diferentes para a mesma condição"},{"k":"B","t":"HIV é o vírus; AIDS é uma fase avançada da infecção, com comprometimento imunológico importante"},{"k":"C","t":"AIDS é o vírus e HIV é o tratamento"},{"k":"D","t":"HIV ocorre apenas quando há sintomas"}],"a":"B","c":"HIV é o agente viral. AIDS é a síndrome que pode surgir em estágio avançado da infecção, quando há importante comprometimento da imunidade ou condições definidoras."},{"id":"hiv003","cat":"Conceito","q":"Uma pessoa vivendo com HIV pode não apresentar sintomas por vários anos?","o":[{"k":"A","t":"Não, os sintomas aparecem sempre na primeira semana"},{"k":"B","t":"Não, toda pessoa apresenta febre diariamente"},{"k":"C","t":"Sim, a infecção pode permanecer assintomática por um período"},{"k":"D","t":"Sim, mas apenas se o teste for negativo"}],"a":"C","c":"A infecção pelo HIV pode permanecer sem sintomas por anos. A ausência de sintomas não exclui a infecção."},{"id":"hiv004","cat":"Conceito","q":"O HIV pertence a qual grupo de vírus?","o":[{"k":"A","t":"Adenovírus"},{"k":"B","t":"Retrovírus"},{"k":"C","t":"Herpesvírus"},{"k":"D","t":"Papilomavírus"}],"a":"B","c":"O HIV é um retrovírus. Seu material genético é RNA e ele utiliza a enzima transcriptase reversa para produzir DNA a partir desse RNA."},{"id":"hiv005","cat":"Conceito","q":"Qual célula é considerada um dos principais alvos do HIV?","o":[{"k":"A","t":"Hemácia"},{"k":"B","t":"Plaqueta"},{"k":"C","t":"Linfócito T CD4+"},{"k":"D","t":"Neurônio motor"}],"a":"C","c":"O HIV infecta principalmente células que expressam CD4, especialmente linfócitos T CD4+, fundamentais para coordenar a resposta imunológica."},{"id":"hiv006","cat":"Conceito","q":"O HIV pode ser eliminado do organismo por meio de um tratamento atualmente disponível?","o":[{"k":"A","t":"Sim, após sete dias de medicamentos"},{"k":"B","t":"Sim, quando a carga viral fica indetectável"},{"k":"C","t":"Não há cura atualmente, mas o tratamento controla a infecção"},{"k":"D","t":"Sim, com antibióticos"}],"a":"C","c":"A terapia antirretroviral controla a replicação do HIV, mas não elimina todos os reservatórios virais. Por isso, o tratamento deve ser mantido."},{"id":"hiv007","cat":"Conceito","q":"Qual afirmação sobre a aparência de uma pessoa vivendo com HIV é correta?","o":[{"k":"A","t":"É possível identificar a infecção pela aparência"},{"k":"B","t":"Toda pessoa apresenta manchas na pele"},{"k":"C","t":"A aparência não permite determinar se alguém tem HIV"},{"k":"D","t":"A pessoa sempre apresenta emagrecimento"}],"a":"C","c":"Não é possível identificar o HIV pela aparência. Muitas pessoas não apresentam sinais visíveis, e o diagnóstico depende de testes."},{"id":"hiv008","cat":"Conceito","q":"O que significa a sigla AIDS, também chamada de síndrome da imunodeficiência adquirida?","o":[{"k":"A","t":"Uma doença causada por bactérias resistentes"},{"k":"B","t":"Uma síndrome associada ao estágio avançado da infecção pelo HIV"},{"k":"C","t":"Uma reação alérgica aos antirretrovirais"},{"k":"D","t":"Uma infecção transmitida exclusivamente por mosquitos"}],"a":"B","c":"A AIDS corresponde a um estágio avançado da infecção pelo HIV, caracterizado por comprometimento imunológico importante e/ou doenças definidoras."},{"id":"hiv009","cat":"Conceito","q":"Qual é a função geral dos linfócitos T CD4+?","o":[{"k":"A","t":"Transportar oxigênio"},{"k":"B","t":"Participar da coordenação da resposta imunológica"},{"k":"C","t":"Produzir hemoglobina"},{"k":"D","t":"Realizar a coagulação sanguínea"}],"a":"B","c":"Os linfócitos T CD4+ auxiliam na coordenação da resposta imune, ativando e orientando outras células de defesa."},{"id":"hiv010","cat":"Conceito","q":"Uma pessoa com diagnóstico de HIV necessariamente tem AIDS?","o":[{"k":"A","t":"Sim, no momento do diagnóstico"},{"k":"B","t":"Sim, após o primeiro mês"},{"k":"C","t":"Não, pode ter HIV sem preencher critérios para AIDS"},{"k":"D","t":"Não, porque HIV não causa AIDS"}],"a":"C","c":"Nem toda pessoa com HIV tem AIDS. O diagnóstico precoce e o tratamento reduzem a possibilidade de progressão para esse estágio."},{"id":"hiv011","cat":"Conceito","q":"Qual alternativa descreve melhor a terapia antirretroviral (TARV)?","o":[{"k":"A","t":"Conjunto de medicamentos que controla a multiplicação do HIV"},{"k":"B","t":"Vacina que impede qualquer infecção"},{"k":"C","t":"Antibiótico que elimina bactérias oportunistas"},{"k":"D","t":"Medicamento utilizado somente para aliviar febre"}],"a":"A","c":"A TARV combina medicamentos que atuam em etapas do ciclo do HIV, reduzindo a replicação viral e permitindo a recuperação ou preservação da imunidade."},{"id":"hiv012","cat":"Conceito","q":"O que é carga viral do HIV?","o":[{"k":"A","t":"Número de linfócitos T CD4+ no organismo"},{"k":"B","t":"Quantidade de HIV detectável em determinada amostra, geralmente no sangue"},{"k":"C","t":"Quantidade de anticorpos contra bactérias"},{"k":"D","t":"Número de glóbulos vermelhos"}],"a":"B","c":"A carga viral expressa a quantidade de RNA do HIV em uma amostra de sangue e é usada para acompanhar a resposta ao tratamento."},{"id":"hiv013","cat":"Conceito","q":"O que é uma infecção oportunista?","o":[{"k":"A","t":"Infecção que ocorre apenas em pessoas sem doenças"},{"k":"B","t":"Infecção que pode aproveitar a redução das defesas imunológicas"},{"k":"C","t":"Infecção transmitida exclusivamente por alimentos"},{"k":"D","t":"Infecção causada sempre pelo próprio HIV"}],"a":"B","c":"Com a imunidade comprometida, microrganismos que normalmente seriam controlados podem causar doenças, chamadas infecções oportunistas."},{"id":"hiv014","cat":"Conceito","q":"Qual afirmação sobre o HIV e o sistema imunológico é correta?","o":[{"k":"A","t":"O HIV fortalece os linfócitos CD4+"},{"k":"B","t":"O HIV pode reduzir a quantidade e prejudicar a função dos CD4+"},{"k":"C","t":"O HIV ataca exclusivamente hemácias"},{"k":"D","t":"O HIV não interfere na imunidade"}],"a":"B","c":"A infecção pelo HIV compromete os linfócitos T CD4+, prejudicando a coordenação da resposta imunológica."},{"id":"hiv015","cat":"Conceito","q":"Uma pessoa que iniciou TARV e está bem clinicamente deve entender que:","o":[{"k":"A","t":"Pode interromper os medicamentos quando quiser"},{"k":"B","t":"O tratamento controla a infecção e deve ser mantido conforme orientação profissional"},{"k":"C","t":"O vírus desapareceu definitivamente"},{"k":"D","t":"Não precisa mais de acompanhamento"}],"a":"B","c":"A melhora clínica e a supressão viral indicam resposta ao tratamento, mas não cura. A TARV e o acompanhamento devem continuar."},{"id":"hiv016","cat":"Transmissão","q":"Qual situação apresenta risco real de transmissão do HIV?","o":[{"k":"A","t":"Abraçar uma pessoa vivendo com HIV"},{"k":"B","t":"Compartilhar uma seringa contaminada"},{"k":"C","t":"Compartilhar copos"},{"k":"D","t":"Usar o mesmo banheiro"}],"a":"B","c":"O compartilhamento de seringas e agulhas pode expor uma pessoa ao sangue contaminado e transmitir o HIV."},{"id":"hiv017","cat":"Transmissão","q":"Quais fluidos corporais podem transmitir o HIV quando contêm quantidade suficiente de vírus e entram em contato com uma via de transmissão?","o":[{"k":"A","t":"Suor e lágrimas"},{"k":"B","t":"Saliva e suor"},{"k":"C","t":"Sangue, sêmen, fluidos vaginais e leite materno"},{"k":"D","t":"Urina e saliva"}],"a":"C","c":"A transmissão está associada a fluidos como sangue, sêmen, secreções vaginais e leite materno, em situações específicas de exposição."},{"id":"hiv018","cat":"Transmissão","q":"O HIV pode ser transmitido por abraço, aperto de mão ou contato casual?","o":[{"k":"A","t":"Sim, principalmente pelo abraço prolongado"},{"k":"B","t":"Sim, quando há convivência diária"},{"k":"C","t":"Não, essas formas de contato não transmitem HIV"},{"k":"D","t":"Somente se a pessoa estiver em tratamento"}],"a":"C","c":"O HIV não é transmitido por contato social cotidiano, como abraços, apertos de mão ou convivência no mesmo ambiente."},{"id":"hiv019","cat":"Transmissão","q":"Qual prática sexual pode transmitir o HIV quando não há prevenção eficaz?","o":[{"k":"A","t":"Sexo anal ou vaginal sem preservativo, em determinadas condições"},{"k":"B","t":"Beijo na bochecha"},{"k":"C","t":"Compartilhar roupas"},{"k":"D","t":"Dormir na mesma cama"}],"a":"A","c":"A relação sexual anal ou vaginal sem métodos preventivos eficazes pode permitir a transmissão do HIV. O sexo anal receptivo apresenta risco particularmente elevado."},{"id":"hiv020","cat":"Transmissão","q":"O compartilhamento de objetos cortantes, como lâminas de barbear, pode representar risco quando:","o":[{"k":"A","t":"Os objetos estão limpos e são de uso individual"},{"k":"B","t":"Há sangue contaminado no objeto e ele causa exposição à corrente sanguínea"},{"k":"C","t":"O objeto foi lavado apenas com água"},{"k":"D","t":"O objeto nunca teve contato com sangue"}],"a":"B","c":"Objetos perfurocortantes compartilhados podem conter sangue. Se houver exposição desse sangue por corte ou perfuração, pode ocorrer transmissão."},{"id":"hiv021","cat":"Transmissão","q":"A transmissão vertical do HIV pode ocorrer em quais períodos?","o":[{"k":"A","t":"Somente durante a gestação"},{"k":"B","t":"Somente no parto"},{"k":"C","t":"Durante a gestação, o parto e a amamentação"},{"k":"D","t":"Somente após os seis meses de vida"}],"a":"C","c":"A transmissão vertical pode ocorrer durante a gestação, o parto e a amamentação. Medidas preventivas reduzem significativamente esse risco."},{"id":"hiv022","cat":"Transmissão","q":"Uma pessoa vivendo com HIV pode transmitir o vírus por picada de mosquito?","o":[{"k":"A","t":"Sim, em qualquer região"},{"k":"B","t":"Sim, se o mosquito picar duas pessoas em sequência"},{"k":"C","t":"Não, mosquitos não transmitem HIV"},{"k":"D","t":"Somente em regiões tropicais"}],"a":"C","c":"O HIV não se replica no mosquito e não é transmitido por picadas de insetos."},{"id":"hiv023","cat":"Transmissão","q":"O beijo social, sem contato com sangue, transmite HIV?","o":[{"k":"A","t":"Sim, sempre"},{"k":"B","t":"Não, o beijo social não é uma via de transmissão"},{"k":"C","t":"Sim, se houver saliva em grande quantidade"},{"k":"D","t":"Somente quando uma das pessoas usa antirretroviral"}],"a":"B","c":"A saliva não transmite HIV em situações de beijo social. Situações excepcionais com presença de sangue exigem avaliação específica, mas não representam transmissão pelo beijo cotidiano."},{"id":"hiv024","cat":"Transmissão","q":"Qual situação pode resultar em exposição ocupacional ao HIV?","o":[{"k":"A","t":"Tocar a pele íntegra de um paciente"},{"k":"B","t":"Sofrer perfuração com agulha previamente utilizada em pessoa com HIV"},{"k":"C","t":"Conversar com paciente"},{"k":"D","t":"Compartilhar uma refeição"}],"a":"B","c":"Acidentes com perfurocortantes contaminados podem expor o profissional ao sangue e exigem avaliação imediata para medidas pós-exposição."},{"id":"hiv025","cat":"Transmissão","q":"O uso compartilhado de talheres por pessoas com e sem HIV:","o":[{"k":"A","t":"É uma forma comum de transmissão"},{"k":"B","t":"Transmite apenas se houver tosse"},{"k":"C","t":"Não transmite HIV"},{"k":"D","t":"Exige esterilização dos talheres após cada refeição"}],"a":"C","c":"O HIV não é transmitido pelo compartilhamento de talheres, pratos ou utensílios de alimentação."},{"id":"hiv026","cat":"Transmissão","q":"Em relação à doação de sangue, qual afirmação é correta?","o":[{"k":"A","t":"Doar sangue transmite HIV ao doador"},{"k":"B","t":"Materiais descartáveis e procedimentos adequados tornam a doação segura para o doador"},{"k":"C","t":"O HIV é transmitido pelo contato com a cadeira de coleta"},{"k":"D","t":"Pessoas que doam sangue sempre contraem HIV"}],"a":"B","c":"A doação realizada em serviços regulamentados utiliza materiais estéreis e descartáveis, não transmitindo HIV ao doador."},{"id":"hiv027","cat":"Transmissão","q":"Qual situação representa risco de transmissão por via sanguínea?","o":[{"k":"A","t":"Receber transfusão de sangue não testado e contaminado"},{"k":"B","t":"Compartilhar uma piscina"},{"k":"C","t":"Usar o mesmo telefone"},{"k":"D","t":"Tocar em maçanetas"}],"a":"A","c":"Sangue contaminado pode transmitir HIV quando introduzido diretamente na circulação, como poderia ocorrer em transfusão não segura. Os serviços realizam triagem para prevenir esse risco."},{"id":"hiv028","cat":"Transmissão","q":"Uma pessoa com HIV e carga viral indetectável de forma sustentada transmite o HIV por via sexual?","o":[{"k":"A","t":"Sim, em toda relação"},{"k":"B","t":"Não há transmissão sexual do HIV quando a indetectabilidade é sustentada"},{"k":"C","t":"Somente transmite durante o dia"},{"k":"D","t":"Transmite apenas se não houver sintomas"}],"a":"B","c":"O conceito Indetectável = Intransmissível (I=I) estabelece que uma pessoa em tratamento, com carga viral indetectável sustentada, não transmite HIV por via sexual."},{"id":"hiv029","cat":"Transmissão","q":"Qual das situações abaixo não representa via de transmissão do HIV?","o":[{"k":"A","t":"Compartilhamento de agulhas contaminadas"},{"k":"B","t":"Relação sexual sem prevenção eficaz"},{"k":"C","t":"Transmissão vertical"},{"k":"D","t":"Compartilhamento de assento sanitário"}],"a":"D","c":"O HIV não é transmitido pelo uso de assentos sanitários, piscinas ou objetos de uso cotidiano sem exposição a fluidos capazes de transmitir o vírus."},{"id":"hiv030","cat":"Transmissão","q":"O risco de transmissão sexual do HIV pode ser reduzido por:","o":[{"k":"A","t":"Uso correto de preservativos e estratégias biomédicas de prevenção"},{"k":"B","t":"Evitar conversar com pessoas vivendo com HIV"},{"k":"C","t":"Compartilhar medicamentos"},{"k":"D","t":"Usar antibióticos após a relação"}],"a":"A","c":"Preservativos, PrEP, tratamento com supressão viral e outras estratégias combinadas reduzem o risco de transmissão."},{"id":"hiv031","cat":"Transmissão","q":"Qual é a principal razão para não compartilhar agulhas e seringas?","o":[{"k":"A","t":"Elas podem alterar a pressão arterial"},{"k":"B","t":"Podem conter sangue contaminado pelo HIV e outros agentes infecciosos"},{"k":"C","t":"Elas reduzem a imunidade pelo contato com o ar"},{"k":"D","t":"Podem transmitir HIV apenas pelo cheiro"}],"a":"B","c":"Agulhas e seringas podem reter sangue. O compartilhamento pode transmitir HIV e outros patógenos transmitidos pelo sangue."},{"id":"hiv032","cat":"Transmissão","q":"O HIV pode ser transmitido pelo leite materno?","o":[{"k":"A","t":"Não, em nenhuma circunstância"},{"k":"B","t":"Sim, a amamentação pode transmitir HIV"},{"k":"C","t":"Somente quando o bebê tem mais de um ano"},{"k":"D","t":"Apenas por meio de mamadeiras"}],"a":"B","c":"O HIV pode ser transmitido pelo leite materno. No Brasil, a orientação para mulheres vivendo com HIV é não amamentar, com oferta de alternativas e acompanhamento pelo serviço de saúde."},{"id":"hiv033","cat":"Transmissão","q":"Qual afirmação sobre a transmissão durante a gestação é correta?","o":[{"k":"A","t":"É impossível ocorrer transmissão antes do parto"},{"k":"B","t":"Pode ocorrer transmissão intrauterina, mas intervenções adequadas reduzem muito o risco"},{"k":"C","t":"A transmissão ocorre apenas quando a gestante apresenta febre"},{"k":"D","t":"A gestação sempre resulta em infecção do bebê"}],"a":"B","c":"A transmissão pode ocorrer ainda durante a gestação. O diagnóstico, a TARV e o acompanhamento obstétrico e pediátrico são fundamentais para reduzir o risco."},{"id":"hiv034","cat":"Prevenção","q":"O que é a PrEP?","o":[{"k":"A","t":"Profilaxia utilizada antes de possíveis exposições ao HIV"},{"k":"B","t":"Tratamento utilizado somente após o diagnóstico de AIDS"},{"k":"C","t":"Vacina contra o HIV"},{"k":"D","t":"Exame para medir CD4"}],"a":"A","c":"A profilaxia pré-exposição (PrEP) utiliza medicamentos antirretrovirais por pessoas HIV-negativas para reduzir o risco de adquirir HIV."},{"id":"hiv035","cat":"Prevenção","q":"O que é a PEP?","o":[{"k":"A","t":"Tratamento para curar definitivamente o HIV"},{"k":"B","t":"Profilaxia utilizada após uma possível exposição ao HIV"},{"k":"C","t":"Exame realizado durante a gestação"},{"k":"D","t":"Vacina aplicada anualmente"}],"a":"B","c":"A profilaxia pós-exposição (PEP) é uma medida de emergência com antirretrovirais após uma possível exposição ao HIV."},{"id":"hiv036","cat":"Prevenção","q":"Em quanto tempo, no máximo, a PEP deve ser iniciada após uma possível exposição ao HIV?","o":[{"k":"A","t":"Até 7 dias"},{"k":"B","t":"Até 30 dias"},{"k":"C","t":"Até 72 horas"},{"k":"D","t":"Até 15 dias"}],"a":"C","c":"A PEP deve ser iniciada o mais rápido possível e no máximo em 72 horas após a exposição. Quanto antes começar, melhor."},{"id":"hiv037","cat":"Prevenção","q":"Por quanto tempo, em geral, a PEP é utilizada?","o":[{"k":"A","t":"7 dias"},{"k":"B","t":"14 dias"},{"k":"C","t":"28 dias"},{"k":"D","t":"90 dias"}],"a":"C","c":"O esquema de PEP é utilizado por 28 dias, com acompanhamento e testagem conforme orientação do serviço de saúde."},{"id":"hiv038","cat":"Prevenção","q":"Qual é a principal diferença entre PrEP e PEP?","o":[{"k":"A","t":"PrEP é antes da exposição; PEP é depois da exposição"},{"k":"B","t":"PrEP é vacina; PEP é antibiótico"},{"k":"C","t":"As duas são usadas apenas após o diagnóstico"},{"k":"D","t":"PrEP trata AIDS e PEP trata hepatite"}],"a":"A","c":"A PrEP é utilizada previamente por pessoas HIV-negativas com possibilidade de exposição. A PEP é indicada após uma exposição potencial e deve ser iniciada rapidamente."},{"id":"hiv039","cat":"Prevenção","q":"O preservativo externo ou interno é importante porque:","o":[{"k":"A","t":"Impede apenas a gravidez, sem prevenir infecções"},{"k":"B","t":"Reduz o risco de transmissão sexual do HIV e de outras ISTs"},{"k":"C","t":"Elimina o HIV do organismo"},{"k":"D","t":"Substitui todos os exames de saúde"}],"a":"B","c":"O uso correto e consistente de preservativos reduz o risco de HIV e de várias outras infecções sexualmente transmissíveis."},{"id":"hiv040","cat":"Prevenção","q":"Qual estratégia é conhecida como prevenção combinada?","o":[{"k":"A","t":"Utilizar apenas uma estratégia para todas as pessoas"},{"k":"B","t":"Combinar diferentes métodos de prevenção conforme as necessidades de cada pessoa"},{"k":"C","t":"Evitar a testagem"},{"k":"D","t":"Utilizar antibióticos continuamente"}],"a":"B","c":"A prevenção combinada reúne estratégias biomédicas, comportamentais e estruturais, como preservativos, PrEP, PEP, testagem e tratamento."},{"id":"hiv041","cat":"Prevenção","q":"Uma pessoa teve uma relação sexual com possível exposição ao HIV há 10 horas. Qual deve ser sua atitude?","o":[{"k":"A","t":"Esperar 30 dias para procurar atendimento"},{"k":"B","t":"Procurar imediatamente um serviço de saúde para avaliar a indicação de PEP"},{"k":"C","t":"Tomar antibiótico por conta própria"},{"k":"D","t":"Aguardar sintomas"}],"a":"B","c":"A PEP precisa ser avaliada e iniciada o mais rápido possível, dentro do limite de 72 horas. A pessoa deve procurar atendimento imediatamente."},{"id":"hiv042","cat":"Prevenção","q":"A PrEP protege contra quais infecções?","o":[{"k":"A","t":"HIV e todas as outras ISTs"},{"k":"B","t":"Somente sífilis"},{"k":"C","t":"Principalmente HIV, não substituindo métodos de prevenção de outras ISTs"},{"k":"D","t":"Hepatite A exclusivamente"}],"a":"C","c":"A PrEP é específica para prevenção do HIV. Ela não previne outras ISTs, por isso preservativos e testagem continuam importantes."},{"id":"hiv043","cat":"Prevenção","q":"Antes de iniciar PrEP, é necessário:","o":[{"k":"A","t":"Confirmar que a pessoa não tem HIV e realizar avaliação clínica"},{"k":"B","t":"Ter diagnóstico de AIDS"},{"k":"C","t":"Suspender todas as vacinas"},{"k":"D","t":"Apresentar sintomas de infecção"}],"a":"A","c":"É necessário excluir infecção pelo HIV antes do início da PrEP e realizar avaliação clínica e exames indicados pelo protocolo."},{"id":"hiv044","cat":"Prevenção","q":"Uma pessoa que utiliza PrEP deve:","o":[{"k":"A","t":"Fazer acompanhamento periódico e testagem para HIV"},{"k":"B","t":"Realizar apenas um teste durante toda a vida"},{"k":"C","t":"Interromper o acompanhamento se estiver saudável"},{"k":"D","t":"Compartilhar os comprimidos com parceiros"}],"a":"A","c":"O uso de PrEP exige acompanhamento regular, testagem para HIV e avaliação de possíveis efeitos adversos e outras necessidades de saúde."},{"id":"hiv045","cat":"Prevenção","q":"Qual medida ajuda a prevenir a transmissão vertical do HIV?","o":[{"k":"A","t":"Acompanhamento pré-natal e uso de antirretrovirais conforme protocolo"},{"k":"B","t":"Suspender o pré-natal"},{"k":"C","t":"Evitar qualquer exame durante a gestação"},{"k":"D","t":"Utilizar antibióticos sem prescrição"}],"a":"A","c":"O diagnóstico durante o pré-natal, a TARV, os cuidados no parto e a profilaxia do recém-nascido reduzem significativamente a transmissão vertical."},{"id":"hiv046","cat":"Prevenção","q":"No Brasil, qual orientação é dada à mulher vivendo com HIV em relação à amamentação?","o":[{"k":"A","t":"Amamentar normalmente se não tiver sintomas"},{"k":"B","t":"Não amamentar, seguindo orientação do serviço de saúde e utilizando alternativa indicada"},{"k":"C","t":"Amamentar somente à noite"},{"k":"D","t":"Amamentar se o bebê tiver teste negativo ao nascer"}],"a":"B","c":"A recomendação brasileira é que mulheres vivendo com HIV não amamentem, mesmo com carga viral indetectável, recebendo orientação e suporte para alimentação segura do bebê."},{"id":"hiv047","cat":"Prevenção","q":"Qual é uma atitude adequada para reduzir o risco de HIV em pessoas que injetam drogas?","o":[{"k":"A","t":"Compartilhar seringas apenas com conhecidos"},{"k":"B","t":"Utilizar materiais estéreis e não compartilhar agulhas ou seringas"},{"k":"C","t":"Limpar a agulha com saliva"},{"k":"D","t":"Reutilizar seringas após secagem"}],"a":"B","c":"O uso de materiais estéreis e individuais evita a exposição a sangue de outras pessoas e reduz o risco de HIV e hepatites virais."},{"id":"hiv048","cat":"Prevenção","q":"A testagem regular para HIV é importante porque:","o":[{"k":"A","t":"O HIV sempre causa sintomas precoces"},{"k":"B","t":"Permite identificar a infecção e iniciar o cuidado oportunamente"},{"k":"C","t":"Substitui o uso de preservativos"},{"k":"D","t":"Evita a necessidade de tratamento"}],"a":"B","c":"A testagem permite o diagnóstico precoce, o início do tratamento e a adoção de medidas para proteger a saúde individual e coletiva."},{"id":"hiv049","cat":"Prevenção","q":"Qual alternativa é um exemplo de prevenção que também beneficia parceiros sexuais?","o":[{"k":"A","t":"Tratamento antirretroviral com carga viral indetectável sustentada"},{"k":"B","t":"Isolamento social da pessoa vivendo com HIV"},{"k":"C","t":"Uso de antibiótico sem indicação"},{"k":"D","t":"Evitar exames de acompanhamento"}],"a":"A","c":"A supressão viral sustentada com TARV impede a transmissão sexual do HIV, princípio conhecido como I=I."},{"id":"hiv050","cat":"Prevenção","q":"A vacinação contra hepatite B e HPV é relevante para pessoas vivendo com HIV porque:","o":[{"k":"A","t":"Substitui a TARV"},{"k":"B","t":"Ajuda a prevenir outras infecções, conforme indicação e avaliação clínica"},{"k":"C","t":"Cura o HIV"},{"k":"D","t":"Impede todas as infecções oportunistas"}],"a":"B","c":"Pessoas vivendo com HIV também precisam de prevenção de outras infecções. A vacinação deve seguir o calendário e as recomendações específicas."},{"id":"hiv051","cat":"Prevenção","q":"Qual atitude não contribui para a prevenção do HIV?","o":[{"k":"A","t":"Realizar testagem quando indicada"},{"k":"B","t":"Utilizar preservativos"},{"k":"C","t":"Compartilhar seringas"},{"k":"D","t":"Buscar atendimento após possível exposição"}],"a":"C","c":"Compartilhar seringas aumenta o risco de transmissão. As demais alternativas são medidas importantes de prevenção ou cuidado."},{"id":"hiv052","cat":"Fisiopatologia","q":"Qual enzima do HIV converte o RNA viral em DNA?","o":[{"k":"A","t":"Integrase"},{"k":"B","t":"Transcriptase reversa"},{"k":"C","t":"Protease"},{"k":"D","t":"Amilase"}],"a":"B","c":"A transcriptase reversa produz DNA a partir do RNA viral, etapa característica do ciclo de replicação dos retrovírus."},{"id":"hiv053","cat":"Fisiopatologia","q":"Qual é a função da integrase no ciclo de replicação do HIV?","o":[{"k":"A","t":"Cortar proteínas virais"},{"k":"B","t":"Integrar o DNA viral ao DNA da célula hospedeira"},{"k":"C","t":"Produzir anticorpos"},{"k":"D","t":"Destruir o envelope viral"}],"a":"B","c":"A integrase permite que o DNA produzido a partir do RNA viral seja incorporado ao material genético da célula hospedeira."},{"id":"hiv054","cat":"Fisiopatologia","q":"Qual é a função da protease do HIV?","o":[{"k":"A","t":"Participar do processamento de proteínas virais para formar partículas maduras"},{"k":"B","t":"Converter RNA em DNA"},{"k":"C","t":"Permitir a entrada de oxigênio na célula"},{"k":"D","t":"Produzir linfócitos CD4"}],"a":"A","c":"A protease cliva poliproteínas virais em proteínas funcionais, etapa essencial para a maturação de partículas virais infectantes."},{"id":"hiv055","cat":"Fisiopatologia","q":"Qual molécula de superfície celular é utilizada pelo HIV para se ligar à célula-alvo?","o":[{"k":"A","t":"CD4"},{"k":"B","t":"Hemoglobina"},{"k":"C","t":"Insulina"},{"k":"D","t":"Colágeno"}],"a":"A","c":"A glicoproteína viral gp120 liga-se ao receptor CD4 e também interage com correceptores, como CCR5 ou CXCR4, facilitando a entrada viral."},{"id":"hiv056","cat":"Fisiopatologia","q":"Além do CD4, quais correceptores podem participar da entrada do HIV na célula?","o":[{"k":"A","t":"CCR5 e CXCR4"},{"k":"B","t":"CD8 e CD19"},{"k":"C","t":"IgG e IgM"},{"k":"D","t":"MHC I e hemoglobina"}],"a":"A","c":"O HIV pode utilizar os correceptores CCR5 ou CXCR4, além do CD4, para entrar nas células suscetíveis."},{"id":"hiv057","cat":"Fisiopatologia","q":"Após a entrada do HIV na célula, qual processo ocorre para permitir a produção de DNA viral?","o":[{"k":"A","t":"Tradução do DNA em proteínas humanas"},{"k":"B","t":"Ação da transcriptase reversa sobre o RNA viral"},{"k":"C","t":"Produção de hemoglobina"},{"k":"D","t":"Divisão celular por meiose"}],"a":"B","c":"A transcriptase reversa converte o RNA do HIV em DNA, que posteriormente pode ser integrado ao genoma da célula."},{"id":"hiv058","cat":"Fisiopatologia","q":"O que acontece quando o DNA viral é integrado ao genoma da célula hospedeira?","o":[{"k":"A","t":"O material viral pode permanecer como provírus e ser utilizado para produzir componentes virais"},{"k":"B","t":"O HIV é eliminado imediatamente"},{"k":"C","t":"A célula passa a produzir hemácias"},{"k":"D","t":"O vírus perde todo o seu material genético"}],"a":"A","c":"Após a integração, o DNA viral (provírus) pode utilizar a maquinaria celular para produzir RNA e proteínas virais."},{"id":"hiv059","cat":"Fisiopatologia","q":"Por que a redução dos linfócitos T CD4+ é prejudicial?","o":[{"k":"A","t":"Porque diminui a capacidade de coordenação da resposta imune"},{"k":"B","t":"Porque impede a coagulação"},{"k":"C","t":"Porque reduz a produção de bile"},{"k":"D","t":"Porque aumenta a quantidade de hemácias"}],"a":"A","c":"Os CD4+ coordenam diversas respostas imunológicas. Sua perda progressiva prejudica a defesa contra diferentes microrganismos."},{"id":"hiv060","cat":"Fisiopatologia","q":"O que pode ocorrer quando a imunidade de uma pessoa com HIV fica muito comprometida?","o":[{"k":"A","t":"Redução do risco de infecções"},{"k":"B","t":"Maior suscetibilidade a infecções oportunistas"},{"k":"C","t":"Aumento obrigatório da produção de plaquetas"},{"k":"D","t":"Imunidade completa contra fungos"}],"a":"B","c":"A queda importante dos CD4+ favorece o aparecimento de infecções oportunistas e algumas neoplasias associadas à imunossupressão."},{"id":"hiv061","cat":"Fisiopatologia","q":"O que é o provírus do HIV?","o":[{"k":"A","t":"DNA viral integrado ao material genético da célula hospedeira"},{"k":"B","t":"RNA presente apenas no sangue"},{"k":"C","t":"Anticorpo produzido contra o HIV"},{"k":"D","t":"Uma bactéria que acompanha o vírus"}],"a":"A","c":"O provírus é o DNA do HIV integrado ao genoma da célula. Ele pode persistir e contribuir para a manutenção de reservatórios virais."},{"id":"hiv062","cat":"Fisiopatologia","q":"Por que a TARV geralmente combina medicamentos de diferentes classes?","o":[{"k":"A","t":"Para bloquear diferentes etapas do ciclo viral e aumentar a eficácia"},{"k":"B","t":"Para aumentar a quantidade de vírus"},{"k":"C","t":"Para substituir os linfócitos CD4 por hemácias"},{"k":"D","t":"Para impedir a produção de anticorpos"}],"a":"A","c":"A combinação de antirretrovirais com mecanismos diferentes reduz a replicação viral e dificulta a seleção de vírus resistentes."},{"id":"hiv063","cat":"Fisiopatologia","q":"O que significa resistência do HIV aos medicamentos?","o":[{"k":"A","t":"O vírus sofre alterações que podem reduzir a eficácia de determinados antirretrovirais"},{"k":"B","t":"O organismo deixa de produzir hemácias"},{"k":"C","t":"O vírus transforma-se em bactéria"},{"k":"D","t":"O medicamento passa a agir como vacina"}],"a":"A","c":"Mutações virais podem reduzir a sensibilidade a medicamentos. A resistência pode comprometer o controle da infecção e é uma razão para manter acompanhamento e adesão."},{"id":"hiv064","cat":"Fisiopatologia","q":"Em qual fase da infecção pelo HIV costuma ocorrer aumento expressivo da carga viral?","o":[{"k":"A","t":"Infecção aguda, nas primeiras semanas após a aquisição"},{"k":"B","t":"Somente após 30 anos"},{"k":"C","t":"Apenas durante o sono"},{"k":"D","t":"Somente depois da cura"}],"a":"A","c":"Na fase aguda, a replicação viral pode ser intensa, levando a carga viral elevada antes que a resposta imune consiga reduzi-la parcialmente."},{"id":"hiv065","cat":"Fisiopatologia","q":"O que caracteriza a fase crônica da infecção pelo HIV sem tratamento?","o":[{"k":"A","t":"Ausência completa do vírus"},{"k":"B","t":"Persistência da replicação viral, muitas vezes com poucos ou nenhum sintoma"},{"k":"C","t":"Eliminação definitiva do provírus"},{"k":"D","t":"Aumento permanente dos CD4+"}],"a":"B","c":"Na fase crônica, o HIV continua presente e pode se replicar, mesmo que a pessoa não apresente sintomas importantes."},{"id":"hiv066","cat":"Fisiopatologia","q":"Por que o HIV consegue permanecer no organismo mesmo quando a carga viral fica indetectável com tratamento?","o":[{"k":"A","t":"Porque pode persistir em reservatórios celulares, inclusive como DNA viral integrado"},{"k":"B","t":"Porque se transforma em fungo"},{"k":"C","t":"Porque fica armazenado nos ossos como cálcio"},{"k":"D","t":"Porque deixa de ser um vírus"}],"a":"A","c":"Reservatórios celulares podem manter provírus latente. A TARV suprime a replicação, mas não elimina completamente essas células infectadas."},{"id":"hiv067","cat":"Fisiopatologia","q":"Qual é a consequência da replicação contínua do HIV sem tratamento?","o":[{"k":"A","t":"Pode ocorrer perda progressiva de células CD4+ e enfraquecimento da imunidade"},{"k":"B","t":"Aumento permanente da imunidade"},{"k":"C","t":"Produção de anticorpos contra todas as doenças"},{"k":"D","t":"Proteção contra infecções bacterianas"}],"a":"A","c":"A replicação viral persistente e os mecanismos de dano imunológico podem levar à redução progressiva dos CD4+ e à imunodeficiência."},{"id":"hiv068","cat":"Diagnóstico","q":"Qual exame é utilizado para diagnosticar a infecção pelo HIV?","o":[{"k":"A","t":"Teste específico para HIV, como teste rápido ou imunoensaio laboratorial"},{"k":"B","t":"Hemograma isolado"},{"k":"C","t":"Radiografia de tórax"},{"k":"D","t":"Dosagem de glicose"}],"a":"A","c":"O diagnóstico é realizado por testes específicos para HIV, seguindo algoritmos e fluxos confirmatórios recomendados."},{"id":"hiv069","cat":"Diagnóstico","q":"O teste rápido para HIV geralmente utiliza qual tipo de amostra, dependendo do kit?","o":[{"k":"A","t":"Apenas cabelo"},{"k":"B","t":"Sangue obtido por punção digital ou fluido oral"},{"k":"C","t":"Somente urina"},{"k":"D","t":"Fragmento ósseo"}],"a":"B","c":"Há testes rápidos que utilizam sangue capilar e outros que utilizam fluido oral. O tipo de amostra depende do teste disponível."},{"id":"hiv070","cat":"Diagnóstico","q":"O que é janela imunológica?","o":[{"k":"A","t":"Período entre a infecção e o momento em que um teste consegue detectar marcadores da infecção"},{"k":"B","t":"Período em que o vírus fica fora do corpo"},{"k":"C","t":"Tempo necessário para a TARV curar a infecção"},{"k":"D","t":"Intervalo entre duas doses de vacina"}],"a":"A","c":"A janela imunológica varia conforme o tipo de teste e o marcador pesquisado. Um teste realizado muito cedo pode não detectar a infecção."},{"id":"hiv071","cat":"Diagnóstico","q":"Uma pessoa teve exposição recente ao HIV e realizou teste negativo poucos dias depois. O que deve ser considerado?","o":[{"k":"A","t":"O resultado exclui definitivamente a infecção"},{"k":"B","t":"Pode estar dentro da janela imunológica e precisar repetir a testagem conforme orientação"},{"k":"C","t":"O HIV não pode ser diagnosticado em adultos"},{"k":"D","t":"O teste deve ser substituído por hemograma"}],"a":"B","c":"Um resultado negativo muito próximo da exposição pode ocorrer antes de o teste detectar a infecção. A repetição deve seguir o protocolo e considerar o tipo de teste e o uso de PEP."},{"id":"hiv072","cat":"Diagnóstico","q":"Qual exame é mais utilizado para acompanhar a quantidade de HIV no sangue?","o":[{"k":"A","t":"Carga viral do HIV (RNA viral)"},{"k":"B","t":"Hemoglobina glicada"},{"k":"C","t":"Tipagem sanguínea"},{"k":"D","t":"Ureia"}],"a":"A","c":"O exame de carga viral quantifica o RNA do HIV no sangue e permite avaliar a resposta à terapia antirretroviral."},{"id":"hiv073","cat":"Diagnóstico","q":"Qual exame ajuda a avaliar o estado imunológico de uma pessoa vivendo com HIV?","o":[{"k":"A","t":"Contagem de linfócitos T CD4+"},{"k":"B","t":"Dosagem de colesterol"},{"k":"C","t":"Teste de gravidez"},{"k":"D","t":"Dosagem de sódio"}],"a":"A","c":"A contagem de CD4+ estima o grau de comprometimento imunológico e auxilia no acompanhamento clínico."},{"id":"hiv074","cat":"Diagnóstico","q":"Qual é a diferença entre carga viral e contagem de CD4?","o":[{"k":"A","t":"Carga viral estima a quantidade de vírus; CD4 avalia uma população importante de células de defesa"},{"k":"B","t":"Ambas medem apenas anticorpos"},{"k":"C","t":"Carga viral mede hemácias; CD4 mede plaquetas"},{"k":"D","t":"São exames idênticos"}],"a":"A","c":"A carga viral monitora a replicação do HIV, enquanto a contagem de CD4 avalia o estado de uma parte importante do sistema imunológico."},{"id":"hiv075","cat":"Diagnóstico","q":"Um teste de HIV reagente significa que:","o":[{"k":"A","t":"É necessário seguir o algoritmo diagnóstico recomendado para estabelecer o diagnóstico"},{"k":"B","t":"A pessoa está curada"},{"k":"C","t":"A pessoa obrigatoriamente tem AIDS"},{"k":"D","t":"Não é necessário nenhum outro procedimento"}],"a":"A","c":"Um resultado reagente deve ser interpretado conforme o fluxo diagnóstico vigente, que pode incluir testes complementares ou sequência de testes."},{"id":"hiv076","cat":"Diagnóstico","q":"Por que o diagnóstico precoce do HIV é importante?","o":[{"k":"A","t":"Permite iniciar o tratamento oportunamente e reduzir complicações"},{"k":"B","t":"Impede a necessidade de acompanhamento"},{"k":"C","t":"Garante que a pessoa nunca terá outra infecção"},{"k":"D","t":"Elimina o vírus sem medicamentos"}],"a":"A","c":"O diagnóstico precoce permite iniciar a TARV, preservar a imunidade, reduzir morbidade e prevenir a transmissão sexual quando há supressão viral sustentada."},{"id":"hiv077","cat":"Diagnóstico","q":"O hemograma é suficiente para confirmar ou excluir a infecção pelo HIV?","o":[{"k":"A","t":"Sim, sempre"},{"k":"B","t":"Não, é necessário teste específico para HIV"},{"k":"C","t":"Sim, desde que a pessoa tenha febre"},{"k":"D","t":"Não, porque o HIV não altera nenhum parâmetro sanguíneo"}],"a":"B","c":"O hemograma pode mostrar alterações inespecíficas, mas não diagnostica HIV. A confirmação depende de testes específicos."},{"id":"hiv078","cat":"Diagnóstico","q":"Qual marcador pode ser detectado por testes de quarta geração?","o":[{"k":"A","t":"Antígeno p24 e anticorpos anti-HIV"},{"k":"B","t":"Somente CD4"},{"k":"C","t":"Apenas DNA humano"},{"k":"D","t":"Somente anticorpos contra hepatite B"}],"a":"A","c":"Os testes de quarta geração detectam o antígeno p24 e anticorpos contra HIV-1 e/ou HIV-2, permitindo diagnóstico mais precoce que testes apenas de anticorpos."},{"id":"hiv079","cat":"Diagnóstico","q":"O teste molecular para HIV pode detectar:","o":[{"k":"A","t":"Material genético viral, como RNA do HIV"},{"k":"B","t":"Somente glicose"},{"k":"C","t":"Apenas anticorpos IgE"},{"k":"D","t":"Hemoglobina"}],"a":"A","c":"Testes moleculares detectam ácidos nucleicos virais e podem ser utilizados em situações específicas, inclusive em protocolos diagnósticos e monitoramento."},{"id":"hiv080","cat":"Diagnóstico","q":"Uma pessoa sem sintomas deve fazer teste de HIV se houver indicação ou possibilidade de exposição?","o":[{"k":"A","t":"Não, apenas pessoas com sintomas devem testar"},{"k":"B","t":"Sim, a ausência de sintomas não exclui infecção"},{"k":"C","t":"Não, porque o teste só funciona com febre"},{"k":"D","t":"Sim, mas somente após 10 anos"}],"a":"B","c":"Como a infecção pode permanecer assintomática, a testagem é importante mesmo na ausência de sinais ou sintomas."},{"id":"hiv081","cat":"Diagnóstico","q":"Após uma possível exposição, a pessoa deve considerar o tempo desde o contato porque:","o":[{"k":"A","t":"A janela de detecção varia de acordo com o teste"},{"k":"B","t":"Todos os testes detectam HIV no mesmo minuto"},{"k":"C","t":"O HIV só aparece após sintomas graves"},{"k":"D","t":"O tempo não interfere no resultado"}],"a":"A","c":"O período até a detecção depende do teste utilizado e do marcador pesquisado. Por isso, o serviço orienta quando repetir o exame."},{"id":"hiv082","cat":"Diagnóstico","q":"Qual é a finalidade principal do teste de carga viral durante o tratamento?","o":[{"k":"A","t":"Verificar se a replicação viral está controlada"},{"k":"B","t":"Confirmar o tipo sanguíneo"},{"k":"C","t":"Diagnosticar hipertensão"},{"k":"D","t":"Medir a quantidade de anticorpos contra o vírus da gripe"}],"a":"A","c":"A carga viral permite verificar se a TARV está reduzindo o HIV a níveis muito baixos ou indetectáveis."},{"id":"hiv083","cat":"Diagnóstico","q":"A contagem de CD4 é utilizada para:","o":[{"k":"A","t":"Avaliar a situação imunológica e auxiliar decisões de acompanhamento"},{"k":"B","t":"Substituir todos os testes de HIV"},{"k":"C","t":"Medir diretamente o RNA viral"},{"k":"D","t":"Determinar a idade da infecção com precisão"}],"a":"A","c":"A contagem de CD4 auxilia na avaliação do grau de imunossupressão e na identificação de situações que exigem cuidados adicionais."},{"id":"hiv084","cat":"Diagnóstico","q":"Qual é a conduta adequada quando uma pessoa apresenta teste não reagente, mas teve exposição muito recente?","o":[{"k":"A","t":"Considerar o período de janela e seguir orientação para nova testagem"},{"k":"B","t":"Concluir que nunca teve contato com o HIV"},{"k":"C","t":"Iniciar tratamento para AIDS sem avaliação"},{"k":"D","t":"Ignorar a exposição"}],"a":"A","c":"Um teste pode ser não reagente durante a janela imunológica. A necessidade e o momento de repetir o exame dependem do tipo de teste e do protocolo."},{"id":"hiv085","cat":"Tratamento","q":"Qual é o principal objetivo da terapia antirretroviral?","o":[{"k":"A","t":"Controlar a replicação do HIV e preservar a função imunológica"},{"k":"B","t":"Eliminar todos os vírus do organismo em poucos dias"},{"k":"C","t":"Aumentar a carga viral"},{"k":"D","t":"Substituir a alimentação"}],"a":"A","c":"A TARV reduz a replicação viral, favorece a recuperação imunológica e diminui o risco de adoecimento e transmissão sexual."},{"id":"hiv086","cat":"Tratamento","q":"Quando uma pessoa recebe diagnóstico de HIV, quando deve iniciar a TARV, em geral?","o":[{"k":"A","t":"Somente quando desenvolver AIDS"},{"k":"B","t":"O mais cedo possível, conforme avaliação e protocolo"},{"k":"C","t":"Apenas após dez anos"},{"k":"D","t":"Somente quando apresentar febre"}],"a":"B","c":"A recomendação é oferecer início oportuno da TARV após o diagnóstico, com avaliação clínica e apoio para adesão."},{"id":"hiv087","cat":"Tratamento","q":"Por que é importante tomar os antirretrovirais conforme a prescrição?","o":[{"k":"A","t":"Para manter a supressão viral e reduzir o risco de resistência"},{"k":"B","t":"Para aumentar a quantidade de vírus"},{"k":"C","t":"Para impedir a formação de CD4"},{"k":"D","t":"Para substituir a testagem"}],"a":"A","c":"A adesão adequada mantém concentrações eficazes dos medicamentos, favorece o controle viral e reduz o risco de falha e resistência."},{"id":"hiv088","cat":"Tratamento","q":"Uma pessoa em tratamento apresenta carga viral indetectável de forma sustentada. O que isso significa para a transmissão sexual?","o":[{"k":"A","t":"Que não transmite HIV por via sexual enquanto mantiver a supressão viral sustentada"},{"k":"B","t":"Que está curada e pode parar os medicamentos"},{"k":"C","t":"Que pode transmitir com maior facilidade"},{"k":"D","t":"Que não precisa mais de acompanhamento"}],"a":"A","c":"O conceito I=I indica que uma pessoa com carga viral indetectável sustentada não transmite HIV por via sexual. A TARV deve ser mantida."},{"id":"hiv089","cat":"Tratamento","q":"O que significa I=I?","o":[{"k":"A","t":"Infecção igual a imunidade"},{"k":"B","t":"Indetectável = Intransmissível, no contexto da transmissão sexual"},{"k":"C","t":"Imunidade igual a infecção"},{"k":"D","t":"Início igual a interrupção"}],"a":"B","c":"I=I significa que a pessoa vivendo com HIV em tratamento e com carga viral indetectável sustentada não transmite o vírus por via sexual."},{"id":"hiv090","cat":"Tratamento","q":"Uma pessoa com HIV pode interromper a TARV por conta própria quando se sente bem?","o":[{"k":"A","t":"Sim, se não tiver sintomas"},{"k":"B","t":"Não, a interrupção pode permitir que o vírus volte a se multiplicar"},{"k":"C","t":"Sim, após três meses"},{"k":"D","t":"Sim, quando a carga viral está indetectável"}],"a":"B","c":"A supressão viral depende da continuidade da TARV. A interrupção sem orientação pode levar ao aumento da carga viral e comprometer o tratamento."},{"id":"hiv091","cat":"Tratamento","q":"O que pode acontecer se a pessoa não tomar os antirretrovirais corretamente?","o":[{"k":"A","t":"A carga viral pode aumentar e pode surgir resistência"},{"k":"B","t":"O HIV desaparece"},{"k":"C","t":"Os CD4 aumentam obrigatoriamente"},{"k":"D","t":"A pessoa fica imune a outras infecções"}],"a":"A","c":"Falhas frequentes na adesão podem permitir replicação viral e favorecer o desenvolvimento de resistência aos medicamentos."},{"id":"hiv092","cat":"Tratamento","q":"A TARV é indicada apenas para pessoas que já desenvolveram AIDS?","o":[{"k":"A","t":"Sim, exclusivamente"},{"k":"B","t":"Não, é indicada para todas as pessoas diagnosticadas com HIV, conforme protocolo"},{"k":"C","t":"Sim, apenas para idosos"},{"k":"D","t":"Não, porque não existe tratamento"}],"a":"B","c":"A TARV é recomendada para todas as pessoas com diagnóstico de HIV, independentemente da contagem de CD4 ou presença de sintomas."},{"id":"hiv093","cat":"Tratamento","q":"Qual é uma consequência positiva do tratamento eficaz e contínuo?","o":[{"k":"A","t":"Redução da carga viral e recuperação ou preservação da imunidade"},{"k":"B","t":"Aumento da transmissão sexual"},{"k":"C","t":"Destruição de todos os linfócitos"},{"k":"D","t":"Aumento obrigatório das infecções oportunistas"}],"a":"A","c":"A TARV eficaz reduz a carga viral, permite recuperação dos CD4+ em muitas pessoas e diminui o risco de doenças relacionadas à imunodeficiência."},{"id":"hiv094","cat":"Tratamento","q":"Os medicamentos antirretrovirais devem ser escolhidos:","o":[{"k":"A","t":"Pela própria pessoa, sem avaliação"},{"k":"B","t":"Por profissional de saúde, considerando protocolos e características clínicas"},{"k":"C","t":"Pelo parceiro sexual"},{"k":"D","t":"Com base apenas na aparência física"}],"a":"B","c":"A escolha do esquema depende de protocolos, condições clínicas, possíveis interações, tolerabilidade e outros fatores avaliados pela equipe de saúde."},{"id":"hiv095","cat":"Tratamento","q":"Uma pessoa em TARV apresenta efeitos adversos que a incomodam. Qual é a melhor conduta?","o":[{"k":"A","t":"Suspender imediatamente todos os medicamentos sem avisar"},{"k":"B","t":"Conversar com a equipe de saúde para avaliar e manejar os efeitos"},{"k":"C","t":"Dobrar a dose no dia seguinte"},{"k":"D","t":"Compartilhar os medicamentos com outra pessoa"}],"a":"B","c":"Efeitos adversos devem ser discutidos com a equipe. Pode ser possível manejá-los ou ajustar o esquema sem comprometer o controle da infecção."},{"id":"hiv096","cat":"Tratamento","q":"O acompanhamento de uma pessoa vivendo com HIV pode incluir:","o":[{"k":"A","t":"Avaliação clínica, carga viral, CD4 e exames conforme necessidade"},{"k":"B","t":"Apenas radiografia anual"},{"k":"C","t":"Somente medição de peso"},{"k":"D","t":"Nenhum exame após iniciar TARV"}],"a":"A","c":"O acompanhamento combina avaliação clínica e exames laboratoriais, incluindo carga viral e CD4 conforme o momento e as necessidades da pessoa."},{"id":"hiv097","cat":"Tratamento","q":"Por que uma pessoa com HIV pode precisar de medicamentos para infecções oportunistas?","o":[{"k":"A","t":"Porque a imunidade pode estar comprometida e algumas infecções precisam de prevenção ou tratamento específico"},{"k":"B","t":"Porque a TARV não funciona em ninguém"},{"k":"C","t":"Porque esses medicamentos curam o HIV"},{"k":"D","t":"Porque toda pessoa com HIV tem infecção oportunista"}],"a":"A","c":"Dependendo do estado imunológico e do quadro clínico, podem ser indicados medicamentos para prevenir ou tratar infecções oportunistas, além da TARV."},{"id":"hiv098","cat":"Tratamento","q":"O tratamento antirretroviral pode permitir que uma pessoa vivendo com HIV tenha expectativa e qualidade de vida próximas às da população geral?","o":[{"k":"A","t":"Não, o HIV impede qualquer vida saudável"},{"k":"B","t":"Sim, com diagnóstico, tratamento e acompanhamento adequados"},{"k":"C","t":"Somente se não trabalhar"},{"k":"D","t":"Apenas se permanecer isolada"}],"a":"B","c":"Com acesso à TARV, adesão e acompanhamento adequados, muitas pessoas vivendo com HIV mantêm boa saúde e qualidade de vida."},{"id":"hiv099","cat":"Tratamento","q":"O que deve fazer uma pessoa que esqueceu uma dose de antirretroviral?","o":[{"k":"A","t":"Tomar doses dobradas sempre"},{"k":"B","t":"Seguir as orientações específicas do esquema e buscar orientação da equipe ou da bula, sem dobrar por conta própria"},{"k":"C","t":"Interromper o tratamento por uma semana"},{"k":"D","t":"Descartar todos os comprimidos"}],"a":"B","c":"A conduta diante de uma dose esquecida pode variar conforme o medicamento e o tempo decorrido. Não se deve dobrar a dose sem orientação."},{"id":"hiv100","cat":"Tratamento","q":"Qual afirmação sobre a cura do HIV é correta atualmente?","o":[{"k":"A","t":"A TARV cura a maioria das pessoas em um mês"},{"k":"B","t":"Não há cura amplamente disponível; a TARV controla a infecção"},{"k":"C","t":"A carga viral indetectável significa cura"},{"k":"D","t":"Antibióticos eliminam o HIV"}],"a":"B","c":"Apesar dos avanços, não existe cura amplamente disponível. A TARV controla a infecção e precisa ser mantida."}];
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------- estado ---------- */
+  var items = [], loaded = false, mode = "pending", dbCol = null;
+  var sel = {};
+  var deck = [], cur = null, selected = null, revealed = false, drawn = 0, answered = 0, hits = 0;
+  var editingId = null, altCount = 4, pendingDelete = null, deleteTimer = null;
+  var LOCAL_KEY = "sorteador-questoes-v2";
+
+  function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim(); }
+  function matchCat(s) {
+    var n = norm(s), i;
+    for (i = 0; i < CATS.length; i++) if (norm(CATS[i]) === n) return CATS[i];
+    return null;
+  }
+  function shuffle(arr) {
+    var a = arr.slice(), i, j, t;
+    for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function isExample() { return false; }
+  function source() { return loaded ? items.concat(BUILTIN_QUESTIONS) : []; }
+  function anySel() { return CATS.some(function (c) { return sel[c]; }); }
+  function pool() {
+    var all = anySel();
+    return source().filter(function (x) { return !all || sel[x.cat]; });
+  }
+  function validItem(d) {
+    return d && typeof d.q === "string" && Array.isArray(d.o) && d.o.length >= 2 && typeof d.a === "string" && CATS.indexOf(d.cat) >= 0;
+  }
+
+  /* ---------- armazenamento (db compartilhado, com reserva local) ---------- */
+  function saveLocal() { try { localStorage.setItem(LOCAL_KEY, JSON.stringify(items)); } catch (e) {} }
+  function loadLocal() {
+    try {
+      var raw = localStorage.getItem(LOCAL_KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr.filter(validItem) : [];
+    } catch (e) { return []; }
+  }
+  function newId() { return "q" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  function saveItem(data, id) {
+    if (mode === "db") {
+      var ref = id ? dbCol.doc(id) : dbCol.doc();
+      return ref.set(data);
+    }
+    var rec = Object.assign({ id: id || newId() }, data);
+    var idx = items.findIndex(function (x) { return x.id === rec.id; });
+    if (idx >= 0) items[idx] = rec; else items.push(rec);
+    saveLocal();
+    afterItemsChanged();
+    return Promise.resolve();
+  }
+  function deleteItem(id) {
+    if (mode === "db") return dbCol.doc(id).delete();
+    items = items.filter(function (x) { return x.id !== id; });
+    saveLocal();
+    afterItemsChanged();
+    return Promise.resolve();
+  }
+  function errText(e) {
+    var c = e && e.code;
+    if (c === "invalid_argument") return "Seu acesso não permite cadastrar ou alterar questões nesta página.";
+    if (c === "quota_exceeded") return "O banco chegou ao limite de documentos.";
+    if (c === "resource_exhausted") return "Muitas operações seguidas. Espere um instante e tente de novo.";
+    return "Não consegui salvar agora. Tente de novo em instantes.";
+  }
+
+  function startLocal() {
+    mode = "local";
+    items = loadLocal();
+    loaded = true;
+    afterItemsChanged();
+  }
+  function startDb(db) {
+    mode = "db";
+    dbCol = db.collection("questoes");
+    var timer = setTimeout(function () {
+      if (!loaded) { loaded = true; $("notice").textContent = "Não consegui alcançar o banco ainda. Pode estar sem conexão."; afterItemsChanged(); }
+    }, 10000);
+    dbCol.onSnapshot(function (snap) {
+      var arr = [];
+      snap.docs.forEach(function (d) {
+        var data = d.data();
+        if (!data) return;
+        var rec = Object.assign({ id: d.id }, data);
+        if (validItem(rec)) arr.push(rec);
+      });
+      arr.sort(function (a, b) { return (a.ts || 0) - (b.ts || 0); });
+      if (snap.metadata && snap.metadata.fromCache && !arr.length && !loaded) return;
+      clearTimeout(timer);
+      items = arr;
+      loaded = true;
+      afterItemsChanged();
+    }, function () {
+      clearTimeout(timer);
+      if (!loaded) { startLocal(); }
+    });
+  }
+
+  /* ---------- placar e chips ---------- */
+  function updateStats() {
+    var p = pool().length;
+    $("stDrawn").textContent = Math.min(drawn, p) + "/" + p;
+    $("stHits").textContent = hits + "/" + answered;
+  }
+
+  function renderChips() {
+    var box = $("chips");
+    box.innerHTML = "";
+    var counts = {};
+    source().forEach(function (x) { counts[x.cat] = (counts[x.cat] || 0) + 1; });
+    CATS.forEach(function (c) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip cat-" + slug(c);
+      b.setAttribute("aria-pressed", sel[c] ? "true" : "false");
+      var n = counts[c] || 0;
+      b.disabled = n === 0;
+      b.appendChild(document.createTextNode(c));
+      var s = document.createElement("span"); s.className = "n"; s.textContent = n;
+      b.appendChild(s);
+      b.addEventListener("click", function () {
+        sel[c] = !sel[c];
+        resetCard();
+        renderChips();
+        updateStats();
+      });
+      box.appendChild(b);
+    });
+  }
+
+  /* ---------- cartão da questão ---------- */
+  function resetCard() {
+    deck = []; cur = null; selected = null; revealed = false; drawn = 0;
+    $("opts").hidden = true; $("opts").innerHTML = "";
+    $("answer").hidden = true; $("btnReveal").hidden = true;
+    $("mCat").hidden = true; $("mEx").hidden = true; $("mNum").textContent = ""; setCardCat(null);
+    $("btnDraw").textContent = "Sortear questão";
+    var p = pool().length;
+    $("btnDraw").disabled = !loaded || p === 0;
+    if (!loaded) $("qText").textContent = "Carregando suas questões…";
+    else if (p === 0) $("qText").textContent = "Nenhuma questão nessas categorias. Cadastre uma na aba Cadastrar.";
+    else $("qText").textContent = "Clique em “Sortear questão” para começar.";
+    $("notice").textContent = isExample() ? "Estas são questões de exemplo. Quando você cadastrar as suas, elas somem." : "";
+  }
+
+  function renderQuestion() {
+    var item = cur;
+    $("qText").textContent = item.q;
+    $("mCat").textContent = item.cat; $("mCat").hidden = false;
+    $("mCat").className = "tag cat cat-" + slug(item.cat); setCardCat(item.cat);
+    $("mEx").hidden = !isExample();
+    $("mNum").textContent = "Questão " + drawn + " desta rodada";
+    var box = $("opts");
+    box.hidden = false;
+    box.innerHTML = "";
+    item.o.forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opt";
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", "false");
+      b.dataset.key = o.k;
+      var k = document.createElement("span"); k.className = "key"; k.textContent = o.k;
+      var t = document.createElement("span"); t.className = "txt"; t.textContent = o.t;
+      b.appendChild(k); b.appendChild(t);
+      b.addEventListener("click", function () { choose(o.k); });
+      box.appendChild(b);
+    });
+    $("btnReveal").hidden = false;
+    $("answer").hidden = true;
+    $("btnDraw").textContent = "Sortear outra";
+    $("notice").textContent = isExample() ? "Questão de exemplo. Cadastre as suas na aba Cadastrar." : "";
+  }
+
+  function choose(key) {
+    if (revealed) return;
+    selected = key;
+    Array.prototype.forEach.call($("opts").children, function (b) {
+      b.setAttribute("aria-checked", b.dataset.key === key ? "true" : "false");
+    });
+  }
+
+  function reveal() {
+    if (!cur || revealed) return;
+    revealed = true;
+    Array.prototype.forEach.call($("opts").children, function (b) {
+      b.disabled = true;
+      if (b.dataset.key === cur.a) b.classList.add("correct");
+      else if (b.dataset.key === selected) b.classList.add("wrong");
+    });
+    var pill = $("vPill"), txt = $("vText");
+    if (selected) {
+      answered++;
+      if (selected === cur.a) { hits++; pill.className = "pill ok"; pill.textContent = "Acertou"; txt.textContent = "Gabarito: " + cur.a; }
+      else { pill.className = "pill bad"; pill.textContent = "Errou"; txt.textContent = "Você marcou " + selected + ". Gabarito: " + cur.a; }
+    } else {
+      pill.className = "pill neutral"; pill.textContent = "Sem resposta"; txt.textContent = "Gabarito: " + cur.a;
+    }
+    $("vComment").textContent = cur.c || "Sem comentário para esta questão.";
+    $("answer").hidden = false;
+    $("btnReveal").hidden = true;
+    updateStats();
+  }
+
+  function draw() {
+    var p = pool();
+    if (!p.length) return;
+    var byId = {};
+    p.forEach(function (x) { byId[x.id] = x; });
+    deck = deck.filter(function (id) { return byId[id]; });
+    var restarted = false;
+    if (!deck.length) {
+      deck = shuffle(p.map(function (x) { return x.id; }));
+      if (drawn > 0) restarted = true;
+      drawn = 0;
+    }
+    cur = byId[deck.pop()];
+    drawn++;
+    selected = null; revealed = false;
+    renderQuestion();
+    updateStats();
+    if (restarted) $("notice").textContent = "Todas as questões já saíram. Começando uma nova rodada.";
+  }
+
+  /* ---------- formulário de cadastro ---------- */
+  function buildAltRows(texts, correct) {
+    var box = $("altRows");
+    box.innerHTML = "";
+    for (var i = 0; i < altCount; i++) {
+      var L = LETTERS[i];
+      var row = document.createElement("div"); row.className = "altrow";
+      var lab = document.createElement("label"); lab.className = "gab"; lab.setAttribute("for", "gab-" + L);
+      var r = document.createElement("input"); r.type = "radio"; r.name = "gab"; r.id = "gab-" + L; r.value = L;
+      if (correct === L) r.checked = true;
+      lab.appendChild(r); lab.appendChild(document.createTextNode(L));
+      var t = document.createElement("input"); t.type = "text"; t.id = "alt-" + L;
+      t.setAttribute("aria-label", "Texto da alternativa " + L);
+      t.placeholder = "Alternativa " + L;
+      t.value = (texts && texts[i]) || "";
+      row.appendChild(lab); row.appendChild(t);
+      box.appendChild(row);
+    }
+    $("btnAddAlt").disabled = altCount >= 5;
+    $("btnDelAlt").disabled = altCount <= 2;
+  }
+  function currentAltState() {
+    var texts = [], correct = null;
+    for (var i = 0; i < altCount; i++) {
+      texts.push($("alt-" + LETTERS[i]).value);
+      if ($("gab-" + LETTERS[i]).checked) correct = LETTERS[i];
+    }
+    return { texts: texts, correct: correct };
+  }
+  function fillCatSelects() {
+    [$("fCat"), $("bCat")].forEach(function (s) {
+      s.innerHTML = "";
+      var ph = document.createElement("option"); ph.value = ""; ph.textContent = "Escolha uma categoria";
+      s.appendChild(ph);
+      CATS.forEach(function (c) { var o = document.createElement("option"); o.value = c; o.textContent = c; s.appendChild(o); });
+    });
+  }
+  function clearForm(keepCat) {
+    var cat = keepCat ? $("fCat").value : "";
+    editingId = null;
+    altCount = 4;
+    buildAltRows([], null);
+    $("fQ").value = ""; $("fC").value = ""; $("fCat").value = cat;
+    $("formTitle").textContent = "Nova questão";
+    $("btnSave").textContent = "Salvar questão";
+    $("btnCancelEdit").hidden = true;
+  }
+  function readForm() {
+    var cat = $("fCat").value;
+    var q = $("fQ").value.trim();
+    var st = currentAltState();
+    if (!cat) return { err: "Escolha uma categoria." };
+    if (!q) return { err: "Escreva o enunciado." };
+    var opts = [], newCorrect = null;
+    st.texts.forEach(function (t, i) {
+      t = t.trim();
+      if (!t) return;
+      var k = LETTERS[opts.length];
+      opts.push({ k: k, t: t });
+      if (st.correct === LETTERS[i]) newCorrect = k;
+    });
+    if (opts.length < 2) return { err: "Preencha pelo menos duas alternativas." };
+    if (!st.correct) return { err: "Marque qual alternativa é o gabarito." };
+    if (!newCorrect) return { err: "A alternativa marcada como gabarito está vazia." };
+    return { data: { cat: cat, q: q, o: opts, a: newCorrect, c: $("fC").value.trim() } };
+  }
+  function setMsg(el, text, isErr) { el.textContent = text; el.className = "notice" + (isErr ? " err" : ""); }
+
+  $("qForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var r = readForm();
+    if (r.err) { setMsg($("formMsg"), r.err, true); return; }
+    var data = r.data, id = editingId;
+    if (id) {
+      var old = items.find(function (x) { return x.id === id; });
+      data.ts = (old && old.ts) || Date.now();
+    } else data.ts = Date.now();
+    $("btnSave").disabled = true;
+    saveItem(data, id).then(function () {
+      setMsg($("formMsg"), id ? "Questão atualizada." : "Questão salva.", false);
+      clearForm(true);
+      $("fQ").focus();
+    }).catch(function (err) {
+      setMsg($("formMsg"), errText(err), true);
+    }).then(function () { $("btnSave").disabled = false; });
+  });
+  $("btnAddAlt").addEventListener("click", function () {
+    if (altCount >= 5) return;
+    var st = currentAltState(); altCount++; buildAltRows(st.texts, st.correct);
+  });
+  $("btnDelAlt").addEventListener("click", function () {
+    if (altCount <= 2) return;
+    var st = currentAltState(); altCount--;
+    var keep = st.correct && LETTERS.indexOf(st.correct) < altCount ? st.correct : null;
+    buildAltRows(st.texts.slice(0, altCount), keep);
+  });
+  $("btnCancelEdit").addEventListener("click", function () { clearForm(false); setMsg($("formMsg"), "", false); });
+
+  function startEdit(item) {
+    editingId = item.id;
+    altCount = Math.max(2, Math.min(5, item.o.length));
+    buildAltRows(item.o.map(function (o) { return o.t; }), item.a);
+    $("fCat").value = item.cat; $("fQ").value = item.q; $("fC").value = item.c || "";
+    $("formTitle").textContent = "Editando questão";
+    $("btnSave").textContent = "Salvar alterações";
+    $("btnCancelEdit").hidden = false;
+    setMsg($("formMsg"), "", false);
+    showTab("pCadastrar");
+    $("fQ").focus();
+  }
+
+  /* ---------- colar várias ---------- */
+  function parseBulk(text, defCat) {
+    var blocks = text.split(/^\s*-{3,}\s*$/m).map(function (b) { return b.trim(); }).filter(Boolean);
+    var out = [], errors = [];
+    blocks.forEach(function (b, idx) {
+      var n = idx + 1, q = [], opts = [], ans = null, com = [], mode2 = "q", cat = defCat, catBad = null, m;
+      b.split(/\r?\n/).forEach(function (raw) {
+        var line = raw.trim();
+        if (!line) { if (mode2 === "c") com.push(""); return; }
+        if ((m = line.match(/^categoria\s*:\s*(.+)$/i)) && mode2 === "q") {
+          var mc = matchCat(m[1]); if (mc) cat = mc; else catBad = m[1]; return;
+        }
+        if ((m = line.match(/^(gabarito|resposta)\s*[:\-]\s*\(?([A-Za-z])/i))) { ans = m[2].toUpperCase(); mode2 = "a"; return; }
+        if ((m = line.match(/^(coment[aá]rio|explica[cç][aã]o)\s*:\s*(.*)$/i))) { com.push(m[2]); mode2 = "c"; return; }
+        if (mode2 === "c") { com.push(line); return; }
+        if ((m = line.match(/^\(?([A-Ea-e])(?:\)|\.\s|\s-\s)\s*(.+)$/))) { opts.push({ k: m[1].toUpperCase(), t: m[2] }); mode2 = "o"; return; }
+        if (mode2 === "o" && opts.length) { opts[opts.length - 1].t += " " + line; return; }
+        q.push(line);
+      });
+      var qt = q.join("\n").replace(/^\d+\s*[\.\)\-]\s*/, "").trim();
+      var keys = opts.map(function (o) { return o.k; });
+      if (catBad) { errors.push("Questão " + n + ": categoria “" + catBad + "” não existe."); return; }
+      if (!cat) { errors.push("Questão " + n + ": sem categoria. Escolha uma padrão ou use a linha “Categoria:”."); return; }
+      if (!qt) { errors.push("Questão " + n + ": falta o enunciado."); return; }
+      if (opts.length < 2) { errors.push("Questão " + n + ": precisa de pelo menos 2 alternativas."); return; }
+      if (!ans || keys.indexOf(ans) < 0) { errors.push("Questão " + n + ": o gabarito precisa ser uma das alternativas."); return; }
+      out.push({ cat: cat, q: qt, o: opts, a: ans, c: com.join("\n").trim() });
+    });
+    return { items: out, errors: errors };
+  }
+  $("btnBulk").addEventListener("click", function () {
+    var res = parseBulk($("bText").value, $("bCat").value);
+    var eb = $("bErrors");
+    eb.innerHTML = "";
+    res.errors.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; eb.appendChild(li); });
+    eb.hidden = !res.errors.length;
+    if (!res.items.length) { setMsg($("bMsg"), "Nenhuma questão válida encontrada.", true); return; }
+    $("btnBulk").disabled = true;
+    var done = 0, base = Date.now();
+    res.items.reduce(function (p, it, i) {
+      return p.then(function () { it.ts = base + i; return saveItem(it, null).then(function () { done++; }); });
+    }, Promise.resolve()).then(function () {
+      setMsg($("bMsg"), done + (done === 1 ? " questão cadastrada." : " questões cadastradas.") + (res.errors.length ? " As com erro foram ignoradas." : ""), false);
+      $("bText").value = "";
+    }).catch(function (err) {
+      setMsg($("bMsg"), (done ? done + " cadastradas antes do erro. " : "") + errText(err), true);
+    }).then(function () { $("btnBulk").disabled = false; });
+  });
+
+  /* ---------- banco ---------- */
+  function renderBank() {
+    var list = $("bankList");
+    list.innerHTML = "";
+    $("bankCount").textContent = items.length ? "(" + items.length + ")" : "";
+    if (!loaded) { $("bankHint").textContent = "Carregando…"; return; }
+    if (!items.length) {
+      $("bankHint").textContent = "As 100 questões de HIV já estão disponíveis no sorteio. Use esta aba para gerenciar questões adicionais.";
+      return;
+    }
+    $("bankHint").textContent = items.length + (items.length === 1 ? " questão" : " questões") + (mode === "local" ? ", salvas só neste navegador." : " no banco.");
+    var sorted = items.slice().sort(function (a, b) {
+      var d = CATS.indexOf(a.cat) - CATS.indexOf(b.cat);
+      return d || (a.ts || 0) - (b.ts || 0);
+    });
+    sorted.forEach(function (it) {
+      var li = document.createElement("li"); li.className = "bitem";
+      var meta = document.createElement("div"); meta.className = "bmeta";
+      var tg = document.createElement("span"); tg.className = "tag cat cat-" + slug(it.cat); tg.textContent = it.cat;
+      var ans = document.createElement("span"); ans.textContent = it.o.length + " alternativas, gabarito " + it.a;
+      meta.appendChild(tg); meta.appendChild(ans);
+      var p = document.createElement("p"); p.className = "btxt"; p.textContent = it.q;
+      var act = document.createElement("div"); act.className = "actions";
+      var ed = document.createElement("button"); ed.type = "button"; ed.className = "btn small"; ed.textContent = "Editar";
+      ed.addEventListener("click", function () { startEdit(it); });
+      act.appendChild(ed);
+      if (pendingDelete === it.id) {
+        var yes = document.createElement("button"); yes.type = "button"; yes.className = "btn small danger"; yes.textContent = "Confirmar exclusão";
+        yes.addEventListener("click", function () {
+          pendingDelete = null; clearTimeout(deleteTimer);
+          deleteItem(it.id).catch(function (err) { $("bankHint").textContent = errText(err); });
+        });
+        var no = document.createElement("button"); no.type = "button"; no.className = "btn small ghost"; no.textContent = "Cancelar";
+        no.addEventListener("click", function () { pendingDelete = null; clearTimeout(deleteTimer); renderBank(); });
+        act.appendChild(yes); act.appendChild(no);
+      } else {
+        var del = document.createElement("button"); del.type = "button"; del.className = "btn small ghost"; del.textContent = "Excluir";
+        del.addEventListener("click", function () {
+          pendingDelete = it.id; renderBank();
+          clearTimeout(deleteTimer);
+          deleteTimer = setTimeout(function () { pendingDelete = null; renderBank(); }, 6000);
+        });
+        act.appendChild(del);
+      }
+      li.appendChild(meta); li.appendChild(p); li.appendChild(act);
+      list.appendChild(li);
+    });
+  }
+
+  /* ---------- abas e ciclo geral ---------- */
+  function showTab(pid) {
+    ["pSortear", "pCadastrar", "pBanco"].forEach(function (id) { $(id).hidden = id !== pid; });
+    Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function (b) {
+      b.setAttribute("aria-selected", b.dataset.p === pid ? "true" : "false");
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function (b) {
+    b.addEventListener("click", function () { showTab(b.dataset.p); });
+  });
+
+  function afterItemsChanged() {
+    CATS.forEach(function (c) { if (sel[c] && !source().some(function (x) { return x.cat === c; })) sel[c] = false; });
+    renderChips();
+    renderBank();
+    if (cur && EXAMPLES.indexOf(cur) >= 0 && items.length) { resetCard(); }
+    else if (!cur) resetCard();
+    else { $("btnDraw").disabled = pool().length === 0; }
+    updateStats();
+  }
+
+  $("btnDraw").addEventListener("click", draw);
+  $("btnReveal").addEventListener("click", reveal);
+
+  document.addEventListener("keydown", function (e) {
+    var tag = (e.target && e.target.tagName) || "";
+    if (tag === "TEXTAREA" || tag === "INPUT" || tag === "SELECT" || e.ctrlKey || e.metaKey || e.altKey) return;
+    var k = e.key.toUpperCase();
+    if (cur && !revealed && !$("pSortear").hidden && /^[A-E]$/.test(k)) {
+      if (cur.o.some(function (o) { return o.k === k; })) choose(k);
+    }
+  });
+
+  /* ---------- início ---------- */
+  fillCatSelects();
+  buildAltRows([], null);
+  renderChips();
+  renderBank();
+  resetCard();
+  updateStats();
+
+  var dbP = (window.claude && typeof window.claude.use === "function") ? window.claude.use("db") : Promise.resolve(null);
+  dbP.then(function (db) { if (db) startDb(db); else startLocal(); }).catch(startLocal);
+})();
+</script>
+
+</body></html>
